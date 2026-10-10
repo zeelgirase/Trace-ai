@@ -1,0 +1,77 @@
+@'
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Vite
+.vite/
+**/.vite/
+vite.config.*.timestamp-*
+vite.config.*.temp-*
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Playwright test artifacts
+playwright-report/
+test-results/
+playwright/.cache/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Caches
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+
+# TypeScript build metadata
+*.tsbuildinfo
+
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+
+# Editors and IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# VS Code: keep shared project settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Local certificates and private keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+'@ | Set-Content -Path "frontend/.gitignore" -Encoding utf8
