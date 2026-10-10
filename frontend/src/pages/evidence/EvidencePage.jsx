@@ -1,0 +1,6 @@
+import React, { useMemo, useState } from 'react';
+import DataTable from '../../components/data-display/DataTable.jsx';
+import DemoModeBanner from '../../components/feedback/DemoModeBanner.jsx';
+import { demoEvidence } from '../../mocks/fixtures/demoEvidence.js';
+
+export default function EvidencePage() { const [filter,setFilter]=useState('All'); const rows=useMemo(()=>filter==='All'?demoEvidence:demoEvidence.filter((item)=>item.status===filter),[filter]); const columns=[{key:'name',label:'Artifact'},{key:'type',label:'Type'},{key:'linked_to',label:'Linked record'},{key:'version',label:'Version'},{key:'status',label:'State'}]; return <main className="trace-page"><DemoModeBanner/><header className="trace-page__header"><div><p className="trace-eyebrow">AUDIT FILE / SUPPORTING RECORDS</p><h1>Evidence archive</h1><p className="trace-muted">Illustrative evidence register. These records are synthetic and are not stored on the backend.</p></div></header><section className="trace-panel"><div className="trace-panel__header"><h2>Evidence items</h2><label>Filter <select value={filter} onChange={(e)=>setFilter(e.target.value)}><option>All</option><option>Demo source</option><option>Review required</option></select></label></div><DataTable columns={columns} rows={rows} getRowKey={(r)=>r.id}/></section></main>; }

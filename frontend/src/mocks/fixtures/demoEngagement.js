@@ -1,0 +1,2 @@
+// Synthetic fixture only. Never represent this record as live backend data.
+export const demoEngagement = Object.freeze({ id: 'DEMO-ENG-001', name: 'FY2025 Revenue Audit — Demonstration', client_name: 'Example Manufacturing Ltd. (Synthetic)', reporting_period_start: '2024-04-01', reporting_period_end: '2025-03-31', status: 'ingestion_complete', description: 'Synthetic engagement for UI demonstration only.', is_demo: true });

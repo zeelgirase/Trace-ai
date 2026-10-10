@@ -1,0 +1,6 @@
+import React, { useState } from 'react';
+import DataTable from '../../components/data-display/DataTable.jsx';
+import DemoModeBanner from '../../components/feedback/DemoModeBanner.jsx';
+import { demoWorkpapers } from '../../mocks/fixtures/demoWorkpapers.js';
+
+export default function WorkpapersPage() { const [items,setItems]=useState(demoWorkpapers.map((x)=>({...x}))); const columns=[{key:'title',label:'Workpaper'},{key:'section',label:'Audit section'},{key:'version',label:'Version'},{key:'status',label:'Status'},{key:'reviewer',label:'Reviewer'},{key:'updated_at',label:'Updated'}]; const moveToReview=(id)=>setItems((all)=>all.map((x)=>x.id===id&&x.status==='Draft'?{...x,status:'Review requested'}:x)); return <main className="trace-page"><DemoModeBanner/><header className="trace-page__header"><div><p className="trace-eyebrow">DOCUMENTATION / REVIEW</p><h1>Workpapers</h1><p className="trace-muted">Local demo state only. Changes do not persist to a backend.</p></div></header><section className="trace-panel"><DataTable columns={columns} rows={items} getRowKey={(r)=>r.id}/><div className="trace-inline-actions">{items.filter((x)=>x.status==='Draft').map((x)=><button className="trace-button trace-button--secondary" key={x.id} onClick={()=>moveToReview(x.id)}>Request review: {x.title}</button>)}</div></section></main>; }
